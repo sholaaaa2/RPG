@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./rpg.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Russo+One&display=swap" rel="stylesheet">
+<body>
+  <div class="respawn hiden-block">
+    <button>RESPAWN</button>
+  </div>
+  <!-- Контейнер для основного меню -->
+  <section id="main-menu">
+    <!-- Карта -->
+    <div id="map-container">
+      <div id="map">
+        <!-- Игрок -->
+        <div id="gamer"></div>
+      </div>
+    </div>
+    <!-- Дилоговое окно -->
+    <div id="dialog">Приветствую тебя путник. Это далекие земли.Это тестовая версия игры. Она предназначена для калибровки внешнего вида и основных механик</div>
+
+    <!-- Ответы на диалоги/окно взаимодействия -->
+    <div id="answers"  class="hiden-block">
+      <!-- Варианты ответов -->
+      <ul id="variant">
+        <li>Вариант диалога 1</li>
+        <li>Вариант диалога 2</li>
+        <li>Вариант диалога 3</li>
+      </ul>
+      <!-- Иконка нпс -->
+      <div id="trader"><img src="./img/giant.gif" alt=""></div>
+    </div>
+
+    <!-- Показ противника(его статы и тд) -->
+    <div id="enemies" class="hiden-block">
+      <span>Монстр НР:10 ATK:10</span>
+      <img src="./img/giant.gif" alt="">
+    </div>
+  </section>
+  <!-- Контейнер для кнопок и хилл бара -->
+  <section id="btns">
+
+    <!-- Кнопки движения -->
+    <div class="move-container">
+      <div id="move">
+        <button data-move="+=20px" data-direction="y" data-direction-plus="+1">&#129145;</button>
+        <button data-move="+=20px" data-direction="x" data-direction-plus="-1">&#129144;</button>
+        <button data-move="-=20px" data-direction="x" data-direction-plus="+1">&#129146;</button>
+        <button data-move="-=20px" data-direction="y" data-direction-plus="-1">&#129147;</button>
+      </div>
+    </div>
+
+    <!-- Показатели здоровья и маны -->
+    <div id="health-mana">
+      <!-- Здоровье -->
+      <div>
+        <span id="curent-health">80</span>/<span id="max-health">80</span>
+        <div class="bar">
+          <div id="health-bar" class="bar-fluid"></div>
+        </div>
+      </div>
+
+      <!-- Мана -->
+      <div>
+        <span id="curent-mana">20</span>/<span id="max-mana">20</span>
+        <div class="bar">
+          <div id="mana-bar" class="bar-fluid"></div>
+        </div>
+      </div>
+
+      <!-- Координаты -->
+      <div>
+        X: <span id="playerX">0</span>&nbsp; &nbsp; &nbsp;
+        Y: <span id="playerY">0</span>
+      </div>
+    </div>
+
+    <!-- Кнопки действия -->
+    <div id="actions" class="invisible-buttons">
+      <button id="attack">Атака</button>
+      <div class="spells-container">
+        <button id="spells">Заклинания</button>
+        <div class="spells-list hiden-block">
+            <span>Мощная атака:<br>
+              - Нанеси сокрушительный урон врагу (Атака 200%)<br>
+               * 8 M
+            </span>
+            <span>Лечение:<br>
+              - Исцели себя (+15 HP)<br>
+              * 6 M
+            </span>
+            <span>Каменная кожа:<br>
+              - Поглотит весь урон и отразит половину обратно<br>
+              * 15 М
+            </span>
+        </div>
+      </div>
+      <button id="block">Защита</button>
+    </div>
+
+    <!-- Контейнер рюкзака -->
+    <div class="bag-container">
+      <!-- Рюкзак игрока -->
+      <div id="player-bag" class="hiden-block">
+        <!-- Надетые шмотки -->
+        <div id="equipment">
+          <!-- Оружие и кольца -->
+          <div class="weapons">
+            <div class="inventory-cells"></div>
+            <div class="inventory-cells"></div>
+          </div>
+          <!-- Аватар игрока -->
+          <img src="./img/giant.gif" alt="">
+          <!-- Броня -->
+          <div class="armor">
+            <div class="inventory-cells"></div>
+            <div class="inventory-cells"></div>
+            <div class="inventory-cells"></div>
+            <div class="inventory-cells"></div>
+          </div>
+
+
+        </div>
+        <!-- Инвентарь -->
+        <div id="inventory">
+          <div class="inventory-cells"></div>
+          <div class="inventory-cells"></div>
+          <div class="inventory-cells"></div>
+          <div class="inventory-cells"></div>
+          <div class="inventory-cells"></div>
+          <div class="inventory-cells"></div>
+          <div class="inventory-cells"></div>
+          <div class="inventory-cells"></div>
+          <div class="inventory-cells"></div>
+          <div class="inventory-cells"></div>
+          <div class="inventory-cells"></div>
+          <div class="inventory-cells"></div>
+        </div>
+      </div>
+
+      <!-- Кнопка активации рюкзака -->
+      <button id="bag-button">
+        <img src="./img/bag.png" alt="bag">
+      </button>
+    </div>
+  </section>
+
+  <script src="./jquery.js"></script>
+  <script src="./rpg.js"></script>
+
+</body>
+</html>

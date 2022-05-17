@@ -1,0 +1,300 @@
+/* font-family: 'Press Start 2P', cursive;
+font-family: 'Russo One', sans-serif; */
+body{margin: 0;padding: 0; background-color: rgb(130, 107, 48, .5)}
+button{border-width: 4px;cursor: pointer;}
+.respawn{
+  background-color: rgba(0, 0, 0, 0.68);
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.respawn button{
+  width: 500px;
+  height: 100px;
+  font-family:'Press Start 2P', cursive;
+  font-size: 3rem;
+  border-radius: 50px;
+}
+/* Контейнер для основного меню ----------------------------------------------------- */
+#main-menu{
+  display:grid;
+  grid-template-columns: 500px 65%;
+  grid-template-rows: repeat(2,230px);
+  /* grid-template-areas: "map dialog" "map answers"; */
+  align-items: flex-start;
+}
+
+/* Карта */
+#map-container{
+  width: 460px;
+  height: 460px;
+  float: left;
+  background-image: url("./img/ramca.png");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border:none;
+  /* margin: 10px; */
+  grid-row: 1/3;
+}
+#map{
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 7px solid black;
+  background-image: url("./img/rpg.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+#gamer{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 7px solid rgb(12, 77, 54);
+  background-color: green
+}
+
+/* Дилоговое окно */
+#dialog{
+  display: inline-block;
+  padding: 10px;
+  background-color: white;
+  /* margin: 10px 0; */
+  height: 150px;
+  /* width: 95%; */
+  font-family:'Press Start 2P', cursive;
+  text-align: left;
+  line-height: 2;
+  border: 7px solid black
+  /* grid-area: dialog; */
+}
+
+/* Ответы на диалоги/окно взаимодействия */
+#answers{
+  position: relative;
+  height: 100%;
+  /* grid-area: answers; */
+}
+#variant{
+  border: 7px solid black;
+  font-family:'Russo One', sans-serif;
+  padding: 0 20px;
+  height: 87%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#variant li{
+  list-style: none;
+  /* display: block; */
+  height: 35px;
+  width: 500px;
+  background-color: rgb(115, 115, 115);
+  border-radius: 30px;
+  /* padding: 10px; */
+  text-align: center;
+  line-height: 2;
+  cursor: pointer;
+  transition: all .2s;
+}
+#variant li:hover{transform: scale(1.1);background-color: rgb(134, 133, 133);}
+
+/* Скрытый блок */
+.hiden-block{display: none;}
+
+
+/* НПС */
+#trader{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 7px solid black;
+  top: 0;
+  right: 0
+}
+#trader img{
+  height: 201px;
+}
+
+/* Показ противника(его статы и тд) */
+#enemies{
+  width: 200px;
+  height: 200px;
+  border: 7px solid black;
+  position: relative;
+}
+#enemies img{
+  position: absolute;
+  width: 100%;
+}
+#enemies span{
+  position: absolute;
+  display: inline-block;
+  font-family:'Press Start 2P', cursive;
+  line-height: 1.6;
+  width: 50%;
+  right: -60%;
+}
+
+/* Кнопки --------------------------------------------------------------------------*/
+#btns{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Движения -------------------------------------------------------------------------------------------*/
+.move-container{
+  width: 460px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#move{
+  width: 180px;
+  height: 180px;
+  display: grid;
+  /* margin: 20px;
+  margin-left: 126px; */
+  grid-template-columns: repeat(3,60px);
+  grid-template-rows: repeat(3,60px);
+  /* grid-template-areas: "... arrow ..." "arrow ... arrow " "... arrow ..."; */
+}
+#move.hiden-block{display: none;}
+#move button{
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  border-radius: 6px;
+  /* grid-area: arrow; */
+}
+#move button:nth-child(1){grid-column: 2/3 ;grid-row: 1/2 }
+#move button:nth-child(2){grid-column: 1/2 ;grid-row: 2/3 }
+#move button:nth-child(3){grid-column: 3/4 ;grid-row: 2/3 }
+#move button:nth-child(4){grid-column: 2/3 ;grid-row: 3/4 }
+
+/* Показатели здоровья и маны ------------------------------------------------------------------------ */
+#health-mana{
+  width: 240px;
+  font-family:'Russo One', sans-serif;
+}
+/* Бар контейнер показа уровня маны/здоровья */
+.bar{
+  width: 100%;
+  height: 20px;
+  background-color: lightgrey;
+  position: relative;
+  overflow: hidden;
+}
+/* Бар наполнитель */
+.bar-fluid{
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: block;
+  position: absolute;
+  transition: .3s width;
+}
+#health-bar{background-color: red;}
+#mana-bar{background-color: blue;}
+
+/* Кнопки действия --------------------------------------------------------------------------------------*/
+#actions{margin: 0 50px;width: 520px;}
+#actions button{
+  text-align: center;
+  height: 60px;
+  width: 150px;
+  font-family:'Press Start 2P', cursive;
+  border-radius: 6px;
+  margin: 5px 10px;
+}
+.spells-container{
+  display: inline-block;
+  position: relative;
+}
+.spells-list{
+  position: absolute;
+  width: 200%;
+  flex-direction: column;
+  background-color: white;
+  bottom: 100%;
+  border-radius: 15px;
+  transition: all .5s;
+}
+.spells-list span{
+  display: block;
+  background-color: rgb(227, 227, 227);
+  font-family:'Russo One', sans-serif;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 10px 1px;
+  border-radius: 15px;
+  transition: all .2s;
+  cursor: pointer;
+}
+.spells-list span:hover{transform: scale(1.05);}
+.spells-list span:active{transform: scale(1);}
+
+/* Делает кнопки невидимыми */
+.invisible-buttons button{display: none}
+.spells-container:hover .spells-list{display: block;}
+/* Кнопка инвентаря ----------------------------------------------------------------------------- */
+#bag-button{
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  margin: 0 30px;
+  background-color: rgb(175, 149, 59);
+}
+#bag-button img{width: 100%}
+/* Кнопка рюкзака активированная */
+#bag-button.active-bag{background-color: rgb(245, 214, 108);}
+
+/* Рюкзак игрока */
+#player-bag{
+  position: absolute;
+  width: 844px;
+  top: 10px;
+  right: 20px;
+  background-color: rgb(175, 149, 59);
+  border-radius: 20px;
+  border: 20px solid rgb(56, 35, 15)
+}
+/* Надетые шмотки */
+#equipment{
+  width: 452px;
+  padding: 20px;
+  display: flex;
+  border-right: 7px solid rgb(56, 35, 15);
+  float: left;
+}
+/* Аватар игрока */
+#equipment img{height: 300px;width: 200px;margin: 0 20px;  border: 7px solid black}
+/* Оружие и броня */
+.weapons, .armor{width: 99px;}
+/* Ячейки предметов */
+.inventory-cells{
+  display: inline-block;
+  width: 85px;
+  height: 85px;
+  border: 2px solid black;
+  background-color: rgba(143, 87, 0, 0.2);
+  box-shadow: 2px 2px 7px rgba(143, 87, 0);
+  margin: 5px
+}
+/* Инвентарь */
+#inventory{
+  width: 305px;
+  padding: 20px;
+  float: left;
+}
